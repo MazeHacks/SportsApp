@@ -19,6 +19,9 @@ class sportsCollectionViewController: UICollectionViewController {
         let nibCell = UINib(nibName: K.sportCellNibName, bundle: nil)
         self.collectionView.register(nibCell, forCellWithReuseIdentifier: K.sportCellIdentifier)
         
+        // Setting up collectionViewFlowLayout
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
         // Fetching data from API and Updating Collection View
         sportsTabViewModel.getSports()
         sportsTabViewModel.sportsList.bind { [weak self] _ in
@@ -83,5 +86,23 @@ class sportsCollectionViewController: UICollectionViewController {
      
      }
      */
+    
+}
+
+//MARK: - CollectionViewDelegateFlowLayout Methods
+
+extension sportsCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width/2, height: collectionView.bounds.height/7)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
     
 }
