@@ -10,7 +10,7 @@ import Foundation
 struct K {
     
     // SportsTab Constants
-    static let sportCellIdentifier = "sportCell"
+    static let sportCellIdentifier = "sportsCell"
     static let sportsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/all_sports.php"
     static let sportCellNibName = "SportsCell"
 }

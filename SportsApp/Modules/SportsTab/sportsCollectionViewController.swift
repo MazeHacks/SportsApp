@@ -15,20 +15,17 @@ class sportsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         // Register cell classes
         let nibCell = UINib(nibName: K.sportCellNibName, bundle: nil)
-        self.collectionView!.register(nibCell, forCellWithReuseIdentifier: K.sportCellIdentifier)
+        self.collectionView.register(nibCell, forCellWithReuseIdentifier: K.sportCellIdentifier)
         
         // Fetching data from API and Updating Collection View
+        sportsTabViewModel.getSports()
         sportsTabViewModel.sportsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
             }
         }
-        sportsTabViewModel.getSports()
     }
     
     

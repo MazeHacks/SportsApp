@@ -15,7 +15,7 @@ struct SportsTabViewModel {
     func getSports() {
         APIService.shared.fetchSports(from: K.sportsListApiUrl, completionHandler: { result in
             DispatchQueue.main.async {
-                sportsList.value?.sports = result?.sports ?? []
+                sportsList.value = result
             }
         })
     }
