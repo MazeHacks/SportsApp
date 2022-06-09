@@ -13,19 +13,21 @@ class LeagueCell: UITableViewCell {
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var youTubeButton: UIButton!
     
+    var youTubeLink: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     @IBAction func youTubeButtonPressed(_ sender: UIButton) {
+        guard let url = URL(string: youTubeLink ?? "https://www.youtube.com/") else { return }
+        UIApplication.shared.open(url)
     }
     
 }

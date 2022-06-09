@@ -47,6 +47,7 @@ class LeaguesTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: K.leagueCellIdentifier, for: indexPath) as? LeagueCell else { fatalError() }
         
         let N = leaguesScreenViewModel.leaguesList.value?.countries.count
+        let currentLeague = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row]
 
         if N == nil {
             
@@ -61,10 +62,14 @@ class LeaguesTableViewController: UITableViewController {
             cell.leagueBadgeImageView.isHidden = false
             cell.leagueNameLabel.textAlignment = .left
             // Configurig the cell
-            let url = URL(string: leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row].strBadge ?? "https://www.dreamstime.com/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-image132482953")
+            let url = URL(string: currentLeague?.strBadge ?? "https://www.dreamstime.com/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-image132482953")
             cell.leagueBadgeImageView.kf.setImage(with: url)
             cell.leagueBadgeImageView.layer.cornerRadius = cell.leagueBadgeImageView.bounds.height/2
-            cell.leagueNameLabel.text = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row].strLeague
+            cell.leagueNameLabel.text = currentLeague?.strLeague
+            if currentLeague?.strYoutube == "" {
+                cell.youTubeButton.isHidden = true
+            }
+            cell.youTubeLink = "https://" + (currentLeague?.strYoutube ?? "www.google.com/")
         }
 
         return cell
