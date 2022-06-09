@@ -14,7 +14,7 @@ struct K {
     static let sportsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/all_sports.php"
     static let sportCellNibName = "SportsCell"
     
-    // SportsTab Constants
+    // LeaguesScreen Constants
     static let leagueCellIdentifier = "leagueCell"
     static let leaguesListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/search_all_leagues.php?s="
     static let leagueCellNibName = "LeagueCell"

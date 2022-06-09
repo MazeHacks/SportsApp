@@ -16,7 +16,7 @@ class sportsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Register cell classes
+        // Registering cell
         let nibCell = UINib(nibName: K.sportCellNibName, bundle: nil)
         self.collectionView.register(nibCell, forCellWithReuseIdentifier: K.sportCellIdentifier)
         
