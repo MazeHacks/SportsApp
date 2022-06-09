@@ -19,4 +19,5 @@ struct SportsTabViewModel {
             }
         })
     }
+    
 }
