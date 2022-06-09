@@ -24,6 +24,8 @@
 		767D91CE284B9E1D002FCCBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 767D91CC284B9E1D002FCCBD /* LaunchScreen.storyboard */; };
 		76E421A728520FE6004F02DB /* SportsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E421A528520FE6004F02DB /* SportsCell.swift */; };
 		76E421A828520FE6004F02DB /* SportsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76E421A628520FE6004F02DB /* SportsCell.xib */; };
+		76E421AA28521090004F02DB /* LeaguesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E421A928521090004F02DB /* LeaguesScreenViewModel.swift */; };
+		76E421EE285221CC004F02DB /* LeaguesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E421ED285221CC004F02DB /* LeaguesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		767D91CF284B9E1D002FCCBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76E421A528520FE6004F02DB /* SportsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportsCell.swift; sourceTree = "<group>"; };
 		76E421A628520FE6004F02DB /* SportsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SportsCell.xib; sourceTree = "<group>"; };
+		76E421A928521090004F02DB /* LeaguesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesScreenViewModel.swift; sourceTree = "<group>"; };
+		76E421ED285221CC004F02DB /* LeaguesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 		7670F5F3284FF20600279835 /* LeaguesView */ = {
 			isa = PBXGroup;
 			children = (
+				76E421ED285221CC004F02DB /* LeaguesTableViewController.swift */,
+				76E421A928521090004F02DB /* LeaguesScreenViewModel.swift */,
 			);
 			path = LeaguesView;
 			sourceTree = "<group>";
@@ -311,8 +317,10 @@
 				7670F5F0284FF1D400279835 /* Observable.swift in Sources */,
 				767D91C4284B9E1B002FCCBD /* SceneDelegate.swift in Sources */,
 				7670F5EE284FF1C400279835 /* APIService.swift in Sources */,
+				76E421AA28521090004F02DB /* LeaguesScreenViewModel.swift in Sources */,
 				7670F5EA284FF1A100279835 /* Constants.swift in Sources */,
 				7670F604284FF5D200279835 /* SportsTabViewModel.swift in Sources */,
+				76E421EE285221CC004F02DB /* LeaguesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

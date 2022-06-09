@@ -9,6 +9,11 @@ import UIKit
 
 class LeagueCell: UITableViewCell {
 
+    @IBOutlet weak var leagueBadgeImageView: UIImageView!
+    @IBOutlet weak var leagueNameLabel: UILabel!
+    @IBOutlet weak var youTubeButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +23,9 @@ class LeagueCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func youTubeButtonPressed(_ sender: UIButton) {
     }
     
 }

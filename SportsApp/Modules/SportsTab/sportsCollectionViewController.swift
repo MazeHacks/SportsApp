@@ -11,6 +11,7 @@ import Kingfisher
 class sportsCollectionViewController: UICollectionViewController {
     
     private let sportsTabViewModel = SportsTabViewModel()
+    private var leaguesScreenViewModel = LeaguesScreenViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,14 @@ class sportsCollectionViewController: UICollectionViewController {
         cell.sportNameLabel.text = sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSport
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.leaguesScreenIdentifier) as! LeaguesTableViewController
+        destinationVC.sport = sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSport
+        self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
 }
