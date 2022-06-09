@@ -17,8 +17,8 @@ class sportsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         // Registering cell
-        let nibCell = UINib(nibName: K.sportCellNibName, bundle: nil)
-        self.collectionView.register(nibCell, forCellWithReuseIdentifier: K.sportCellIdentifier)
+        let nibCell = UINib(nibName: K.sportsTab.sportCellNibName, bundle: nil)
+        self.collectionView.register(nibCell, forCellWithReuseIdentifier: K.sportsTab.sportCellIdentifier)
         
         // Setting up collectionViewFlowLayout
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
@@ -47,7 +47,7 @@ class sportsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.sportCellIdentifier, for: indexPath) as? SportsCell else { fatalError() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.sportsTab.sportCellIdentifier, for: indexPath) as? SportsCell else { fatalError() }
         
         // Configure the cell
         let url = URL(string: sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSportThumb ?? "")
@@ -60,7 +60,7 @@ class sportsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.leaguesScreenIdentifier) as! LeaguesTableViewController
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesScreen.leaguesScreenIdentifier) as! LeaguesTableViewController
         destinationVC.sport = sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSport
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
@@ -82,5 +82,6 @@ extension sportsCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
+    
     
 }

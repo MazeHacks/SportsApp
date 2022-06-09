@@ -17,8 +17,8 @@ class LeaguesTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Registering cell
-        let nibCell = UINib(nibName: K.leagueCellNibName, bundle: nil)
-        self.tableView.register(nibCell, forCellReuseIdentifier: K.leagueCellIdentifier)
+        let nibCell = UINib(nibName: K.LeaguesScreen.leagueCellNibName, bundle: nil)
+        self.tableView.register(nibCell, forCellReuseIdentifier: K.LeaguesScreen.leagueCellIdentifier)
         
         // Fetching data from API and Updating Table View
         leaguesScreenViewModel.getLeagues(of: self.sport!)
@@ -44,7 +44,7 @@ class LeaguesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.leagueCellIdentifier, for: indexPath) as? LeagueCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.LeaguesScreen.leagueCellIdentifier, for: indexPath) as? LeagueCell else { fatalError() }
         
         let N = leaguesScreenViewModel.leaguesList.value?.countries.count
         let currentLeague = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row]

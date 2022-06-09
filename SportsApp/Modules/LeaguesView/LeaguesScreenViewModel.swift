@@ -13,7 +13,7 @@ struct LeaguesScreenViewModel {
     
     //Calling API Service
     func getLeagues(of sport: String) {
-        APIService.shared.fetchLeagues(from: K.leaguesListApiUrl+sport, completionHandler: { result in
+        APIService.shared.fetchLeagues(from: K.LeaguesScreen.leaguesListApiUrl+sport, completionHandler: { result in
             DispatchQueue.main.async {
                 leaguesList.value = result
             }
