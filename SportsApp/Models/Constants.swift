@@ -27,8 +27,16 @@ struct K {
     // LeaguesDetailsView Constants
     struct LeaguesDetails {
         static let eventCellIdentifier = "eventCell"
+        static let eventCelllNibName = "EventCell"
+        
         static let latestResultCellIdentifier = "latestResultCell"
+        static let latestResultCellNibName = "LatestResultsCell"
+
         static let teamCellIdentifier = "teamCell"
+        static let teamCellNibName = "TeamsCell"
+
+        static let leaguesDetailsScreenIdentifier = "LeaguesDetailsCollectionViewController"
+        static let eventsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id="
     }
 
 }

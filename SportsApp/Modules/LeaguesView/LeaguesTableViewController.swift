@@ -74,5 +74,17 @@ class LeaguesTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesDetails.leaguesDetailsScreenIdentifier) as! LeaguesDetailsViewController
+        destinationVC.leagueID = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row].idLeague
+        guard destinationVC.leagueID != nil else { return }
+        destinationVC.modalPresentationStyle = .fullScreen
+        self.present(destinationVC, animated: true)
+        
+        
+    }
 
 }

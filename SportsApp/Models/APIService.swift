@@ -57,4 +57,25 @@ class APIService {
         
     }
     
+    func fetchEvents(from api: String, completionHandler: @escaping (Events?) -> Void) {
+        
+        if let url = URL(string: api) {
+            
+            let request = URLRequest(url: url)
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do {
+                        let result = try JSONDecoder().decode(Events.self, from: data)
+                        completionHandler(result)
+                    } catch {
+                        print("Error!")
+                    }
+                }
+            }
+            task.resume()
+        }
+        
+    }
+    
 }

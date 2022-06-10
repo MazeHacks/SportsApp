@@ -7,6 +7,7 @@
 
 import Foundation
 
+//SportsTab Models
 struct Sport: Codable {
     
     var strSport: String?
@@ -14,18 +15,35 @@ struct Sport: Codable {
 
 }
 
+struct Sports: Codable {
+    var sports: [Sport]
+}
+
+
+
+//LeaguesView Models
 struct League: Codable {
     
     var strLeague: String?
     var strBadge: String?
     var strYoutube: String?
-    
-}
-
-struct Sports: Codable {
-    var sports: [Sport]
+    var idLeague: String?
 }
 
 struct Leagues: Codable {
     var countries: [League]
+}
+
+
+
+//LeaguesDetails Models
+struct Event: Codable {
+    
+    var strEvent: String?
+    var dateEvent: String?
+    var strTime: String?
+}
+
+struct Events: Codable {
+    var events: [Event]
 }
