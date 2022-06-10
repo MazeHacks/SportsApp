@@ -20,18 +20,40 @@ class LeaguesDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nibCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
-        upcomingEventsCollectionView.register(nibCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
-
+        // Registering cells for the 3 collection views
+        let eventCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
+        upcomingEventsCollectionView.register(eventCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
+        let resultCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
+        latestResultsCollectionView.register(resultCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
+        let teamCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
+        teamsCollectionView.register(teamCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
+        
+        // Setting up collectionViewFlowLayout
+        upcomingEventsCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        teamsCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        latestResultsCollectionView.collectionViewLayout = layout
+        
+        // Setting dataSources for CollectionViews
         upcomingEventsCollectionView.dataSource = self
         latestResultsCollectionView.dataSource = self
         teamsCollectionView.dataSource = self
         
-        // Fetching data from API and Updating Collection View
+        // Setting delegate for collectionViews
+        upcomingEventsCollectionView.delegate = self
+        latestResultsCollectionView.delegate = self
+        teamsCollectionView.delegate = self
+        
+        // Fetching data from API and Updating each Collection View
         leaguesDetailsViewModel.getEvents(of: self.leagueID!)
         leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.upcomingEventsCollectionView.reloadData()
+                self?.latestResultsCollectionView.reloadData()
+                self?.teamsCollectionView.reloadData()
+
             }
         }
         
@@ -57,4 +79,12 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     
+}
+
+//MARK: - UICollectionView FlowLayout Methods
+
+extension LeaguesDetailsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/2)
+    }
 }
