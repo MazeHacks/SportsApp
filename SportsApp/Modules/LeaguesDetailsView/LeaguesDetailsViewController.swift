@@ -16,6 +16,7 @@ class LeaguesDetailsViewController: UIViewController {
     private let leaguesDetailsViewModel = LeaguesDetailsViewModel()
 
     var leagueID: String?
+    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +30,13 @@ class LeaguesDetailsViewController: UIViewController {
         teamsCollectionView.register(teamCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
         
         // Setting up collectionViewFlowLayout
-        upcomingEventsCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        teamsCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        latestResultsCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        latestResultsCollectionView.collectionViewLayout = layout
-        
+        upcomingEventsCollectionView.collectionViewLayout = layout
+        teamsCollectionView.collectionViewLayout = layout
+
         // Setting dataSources for CollectionViews
         upcomingEventsCollectionView.dataSource = self
         latestResultsCollectionView.dataSource = self
@@ -51,9 +52,8 @@ class LeaguesDetailsViewController: UIViewController {
         leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.upcomingEventsCollectionView.reloadData()
-                self?.latestResultsCollectionView.reloadData()
-                self?.teamsCollectionView.reloadData()
-
+//                self?.latestResultsCollectionView.reloadData()
+//                self?.teamsCollectionView.reloadData()
             }
         }
         
@@ -65,16 +65,26 @@ class LeaguesDetailsViewController: UIViewController {
 
 extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return leaguesDetailsViewModel.eventsList.value?.events.count ?? 0
+        return leaguesDetailsViewModel.eventsList.value?.events.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.eventCellIdentifier, for: indexPath) as? EventCell else { fatalError() }
         
+        let N = leaguesDetailsViewModel.eventsList.value?.events.count
         let event = leaguesDetailsViewModel.eventsList.value?.events[indexPath.item]
-        cell.eventNameLabel.text = event?.strEvent
-        cell.eventDateLabel.text = event?.dateEvent
-        cell.eventTimeLabel.text = event?.strTime
+
+        if N == nil {
+            cell.eventNameLabel.text = "No Upcoming Events!"
+            cell.eventDateLabel.isHidden = true
+            cell.eventTimeLabel.isHidden = true
+        } else {
+            cell.eventDateLabel.isHidden = false
+            cell.eventTimeLabel.isHidden = false
+            cell.eventNameLabel.text = event?.strEvent
+            cell.eventDateLabel.text = event?.dateEvent
+            cell.eventTimeLabel.text = event?.strTime
+        }
         
         return cell
     }
@@ -85,6 +95,14 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
 
 extension LeaguesDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/2)
+        CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/4)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
     }
 }

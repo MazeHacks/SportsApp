@@ -50,13 +50,10 @@ class LeaguesTableViewController: UITableViewController {
         let currentLeague = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row]
 
         if N == nil {
-            
             cell.leagueNameLabel.text = "No Leagues Available for \(sport!)!"
             cell.leagueNameLabel.textAlignment = .center
             cell.youTubeButton.isHidden = true
             cell.leagueBadgeImageView.isHidden = true
-
-            
         } else {
             cell.youTubeButton.isHidden = false
             cell.leagueBadgeImageView.isHidden = false
@@ -81,8 +78,9 @@ class LeaguesTableViewController: UITableViewController {
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesDetails.leaguesDetailsScreenIdentifier) as! LeaguesDetailsViewController
         destinationVC.leagueID = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row].idLeague
         guard destinationVC.leagueID != nil else { return }
-        destinationVC.modalPresentationStyle = .fullScreen
-        self.present(destinationVC, animated: true)
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+//        destinationVC.modalPresentationStyle = .fullScreen
+//        self.present(destinationVC, animated: true)
         
         
     }
