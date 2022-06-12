@@ -27,7 +27,7 @@ class APIService {
                         let result = try JSONDecoder().decode(Sports.self, from: data)
                         completionHandler(result)
                     } catch {
-                        print("Error!")
+                        print("Error fetching Sports!")
                     }
                 }
             }
@@ -48,7 +48,7 @@ class APIService {
                         let result = try JSONDecoder().decode(Leagues.self, from: data)
                         completionHandler(result)
                     } catch {
-                        print("Error!")
+                        print("Error fetching Leagues!")
                     }
                 }
             }
@@ -69,7 +69,7 @@ class APIService {
                         let result = try JSONDecoder().decode(Events.self, from: data)
                         completionHandler(result)
                     } catch {
-                        print("Error!")
+                        print("Error fetching Events!")
                     }
                 }
             }
@@ -77,5 +77,25 @@ class APIService {
         }
         
     }
+    
+    func fetchTeams(from api: String, completionHandler: @escaping (Teams?) -> Void) {
+        
+        guard let url = URL(string: api) else { return }
+            
+            let request = URLRequest(url: url)
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do {
+                        let result = try JSONDecoder().decode(Teams.self, from: data)
+                        completionHandler(result)
+                        print(result)
+                    } catch {
+                        print("Error fetching Teams!")
+                    }
+                }
+            }
+            task.resume()
+        }
     
 }

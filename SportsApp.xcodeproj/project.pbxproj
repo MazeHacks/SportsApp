@@ -14,8 +14,8 @@
 		762301C528530D3800A4662F /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762301C328530D3800A4662F /* EventCell.xib */; };
 		762301C828530D5200A4662F /* LatestResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762301C628530D5200A4662F /* LatestResultsCell.swift */; };
 		762301C928530D5200A4662F /* LatestResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762301C728530D5200A4662F /* LatestResultsCell.xib */; };
-		762301CC28530D6F00A4662F /* TeamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762301CA28530D6F00A4662F /* TeamsCell.swift */; };
-		762301CD28530D6F00A4662F /* TeamsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 762301CB28530D6F00A4662F /* TeamsCell.xib */; };
+		76441239285607AA00C06DC9 /* TeamsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76441237285607AA00C06DC9 /* TeamsCell.swift */; };
+		7644123A285607AA00C06DC9 /* TeamsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76441238285607AA00C06DC9 /* TeamsCell.xib */; };
 		7670F5E3284FECDB00279835 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5E1284FECDB00279835 /* DataModels.xcdatamodeld */; };
 		7670F5EA284FF1A100279835 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5E9284FF1A100279835 /* Constants.swift */; };
 		7670F5EC284FF1B800279835 /* JSONModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5EB284FF1B800279835 /* JSONModels.swift */; };
@@ -46,8 +46,8 @@
 		762301C328530D3800A4662F /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		762301C628530D5200A4662F /* LatestResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestResultsCell.swift; sourceTree = "<group>"; };
 		762301C728530D5200A4662F /* LatestResultsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestResultsCell.xib; sourceTree = "<group>"; };
-		762301CA28530D6F00A4662F /* TeamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsCell.swift; sourceTree = "<group>"; };
-		762301CB28530D6F00A4662F /* TeamsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamsCell.xib; sourceTree = "<group>"; };
+		76441237285607AA00C06DC9 /* TeamsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsCell.swift; sourceTree = "<group>"; };
+		76441238285607AA00C06DC9 /* TeamsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamsCell.xib; sourceTree = "<group>"; };
 		7670F5E2284FECDB00279835 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
 		7670F5E9284FF1A100279835 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7670F5EB284FF1B800279835 /* JSONModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModels.swift; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 		762301C128530CE000A4662F /* TeamsCell */ = {
 			isa = PBXGroup;
 			children = (
-				762301CA28530D6F00A4662F /* TeamsCell.swift */,
-				762301CB28530D6F00A4662F /* TeamsCell.xib */,
+				76441237285607AA00C06DC9 /* TeamsCell.swift */,
+				76441238285607AA00C06DC9 /* TeamsCell.xib */,
 			);
 			path = TeamsCell;
 			sourceTree = "<group>";
@@ -307,7 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				762301CD28530D6F00A4662F /* TeamsCell.xib in Resources */,
+				7644123A285607AA00C06DC9 /* TeamsCell.xib in Resources */,
 				767D91CE284B9E1D002FCCBD /* LaunchScreen.storyboard in Resources */,
 				76E421A828520FE6004F02DB /* SportsCell.xib in Resources */,
 				767D91CB284B9E1D002FCCBD /* Assets.xcassets in Resources */,
@@ -381,7 +381,7 @@
 				7670F5EE284FF1C400279835 /* APIService.swift in Sources */,
 				76E421AA28521090004F02DB /* LeaguesScreenViewModel.swift in Sources */,
 				762301C428530D3800A4662F /* EventCell.swift in Sources */,
-				762301CC28530D6F00A4662F /* TeamsCell.swift in Sources */,
+				76441239285607AA00C06DC9 /* TeamsCell.swift in Sources */,
 				7670F5EA284FF1A100279835 /* Constants.swift in Sources */,
 				7670F604284FF5D200279835 /* SportsTabViewModel.swift in Sources */,
 				76E421EE285221CC004F02DB /* LeaguesTableViewController.swift in Sources */,
@@ -460,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -514,7 +514,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

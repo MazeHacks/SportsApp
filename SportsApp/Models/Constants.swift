@@ -9,6 +9,9 @@ import Foundation
 
 struct K {
     
+    // General
+    static let noPictureAvailableIconName = "no-picture-available-icon"
+    
     // SportsTab Constants
     struct sportsTab {
         static let sportCellIdentifier = "sportCell"
@@ -26,17 +29,24 @@ struct K {
     
     // LeaguesDetailsView Constants
     struct LeaguesDetails {
+        
+        // Screen Identifier
+        static let leaguesDetailsScreenIdentifier = "LeaguesDetailsCollectionViewController"
+        
+        // Upcoming Events CollectionView Constants
         static let eventCellIdentifier = "eventCell"
         static let eventCelllNibName = "EventCell"
+        static let eventsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id="
         
+        // Latest Results CollectionView Constants
         static let latestResultCellIdentifier = "latestResultCell"
         static let latestResultCellNibName = "LatestResultsCell"
 
+        // Teams CollectionView Constants
         static let teamCellIdentifier = "teamCell"
         static let teamCellNibName = "TeamsCell"
+        static let teamsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/search_all_teams.php?l="
 
-        static let leaguesDetailsScreenIdentifier = "LeaguesDetailsCollectionViewController"
-        static let eventsListApiUrl = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id="
     }
 
 }

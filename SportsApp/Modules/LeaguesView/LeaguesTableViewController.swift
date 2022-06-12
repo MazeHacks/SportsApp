@@ -59,8 +59,8 @@ class LeaguesTableViewController: UITableViewController {
             cell.leagueBadgeImageView.isHidden = false
             cell.leagueNameLabel.textAlignment = .left
             // Configurig the cell
-            let url = URL(string: currentLeague?.strBadge ?? "https://www.dreamstime.com/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-image132482953")
-            cell.leagueBadgeImageView.kf.setImage(with: url)
+            let url = URL(string: currentLeague?.strBadge ?? "")
+            cell.leagueBadgeImageView.kf.setImage(with: url, placeholder: UIImage(named: K.noPictureAvailableIconName))
             cell.leagueBadgeImageView.layer.cornerRadius = cell.leagueBadgeImageView.bounds.height/2
             cell.leagueNameLabel.text = currentLeague?.strLeague
             if currentLeague?.strYoutube == "" {
@@ -74,9 +74,11 @@ class LeaguesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let currentLeague = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesDetails.leaguesDetailsScreenIdentifier) as! LeaguesDetailsViewController
-        destinationVC.leagueID = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row].idLeague
+        destinationVC.leagueID = currentLeague?.idLeague
+        destinationVC.leagueName = currentLeague?.strLeague
         guard destinationVC.leagueID != nil else { return }
         self.navigationController?.pushViewController(destinationVC, animated: true)
 //        destinationVC.modalPresentationStyle = .fullScreen

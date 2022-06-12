@@ -10,8 +10,9 @@ import Foundation
 struct LeaguesDetailsViewModel {
     
     var eventsList: Observable<Events> = Observable(nil)
+    var teamsList: Observable<Teams> = Observable(nil)
     
-    //Calling API Service
+    // Fetching Upcoming Events
     func getEvents(of league: String) {
         APIService.shared.fetchEvents(from: K.LeaguesDetails.eventsListApiUrl+league, completionHandler: { result in
             DispatchQueue.main.async {
@@ -43,4 +44,14 @@ struct LeaguesDetailsViewModel {
     
     }
     
+    // Fetching Teams
+    func getTeams(in league: String) {
+        APIService.shared.fetchTeams(from: K.LeaguesDetails.teamsListApiUrl+league) { result in
+            print(K.LeaguesDetails.teamsListApiUrl+league)
+            DispatchQueue.main.async {
+                teamsList.value = result
+                print(result)
+            }
+        }
+    }
 }

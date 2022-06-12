@@ -49,19 +49,22 @@ class sportsCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.sportsTab.sportCellIdentifier, for: indexPath) as? SportsCell else { fatalError() }
         
+        let sport = sportsTabViewModel.sportsList.value?.sports[indexPath.item]
+        
         // Configure the cell
-        let url = URL(string: sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSportThumb ?? "")
-        cell.sportsImageView.kf.setImage(with: url, placeholder: UIImage(named: "no-picture-available-icon"))
-        cell.sportNameLabel.text = sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSport
+        let url = URL(string: sport?.strSportThumb ?? "")
+        cell.sportsImageView.kf.setImage(with: url, placeholder: UIImage(named: K.noPictureAvailableIconName))
+        cell.sportNameLabel.text = sport?.strSport
         
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        let sport = sportsTabViewModel.sportsList.value?.sports[indexPath.item]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesScreen.leaguesScreenIdentifier) as! LeaguesTableViewController
-        destinationVC.sport = sportsTabViewModel.sportsList.value?.sports[indexPath.item].strSport
+        destinationVC.sport = sport?.strSport
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
