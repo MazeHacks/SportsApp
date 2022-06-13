@@ -43,6 +43,10 @@ struct Event: Codable {
     var strEvent: String?
     var dateEvent: String?
     var strTime: String?
+    var strHomeTeam: String?
+    var strAwayTeam: String?
+    var intHomeScore: String?
+    var intAwayScore: String?
 }
 
 struct Events: Codable {

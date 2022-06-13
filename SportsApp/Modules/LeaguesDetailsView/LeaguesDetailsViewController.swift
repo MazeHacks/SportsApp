@@ -32,8 +32,8 @@ class LeaguesDetailsViewController: UIViewController {
         // Registering cells for the 3 collection views
         let eventCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
         upcomingEventsCollectionView.register(eventCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
-        let resultCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
-        latestResultsCollectionView.register(resultCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
+        let resultCell = UINib(nibName: K.LeaguesDetails.latestResultCellNibName, bundle: nil)
+        latestResultsCollectionView.register(resultCell, forCellWithReuseIdentifier: K.LeaguesDetails.latestResultCellIdentifier)
         let teamCell = UINib(nibName: K.LeaguesDetails.teamCellNibName, bundle: nil)
         teamsCollectionView.register(teamCell, forCellWithReuseIdentifier: K.LeaguesDetails.teamCellIdentifier)
         
@@ -60,6 +60,12 @@ class LeaguesDetailsViewController: UIViewController {
         leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.upcomingEventsCollectionView.reloadData()
+            }
+        }
+        
+        // Fetching Latest Results from API and Updating Collection View
+        leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
+            DispatchQueue.main.async {
                 self?.latestResultsCollectionView.reloadData()
             }
         }
@@ -92,11 +98,10 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
         if collectionView == self.upcomingEventsCollectionView {
             return leaguesDetailsViewModel.eventsList.value?.events.count ?? 1
         } else if collectionView == self.latestResultsCollectionView {
-            return leaguesDetailsViewModel.eventsList.value?.events.count ?? 1
-        } else if collectionView == self.teamsCollectionView {
+            return leaguesDetailsViewModel.resultsList.value?.events.count ?? 1
+        } else {
             return leaguesDetailsViewModel.teamsList.value?.teams.count ?? 0
         }
-        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,6 +115,7 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
             let event = leaguesDetailsViewModel.eventsList.value?.events[indexPath.item]
             
             if n == nil {
+                upcomingEventsCollectionView.backgroundColor = UIColor(red: 242.0, green: 209.0, blue: 209.0, alpha: 0.5)
                 eventCell.eventNameLabel.text = "No Upcoming Events!"
                 eventCell.eventDateLabel.isHidden = true
                 eventCell.eventTimeLabel.isHidden = true
@@ -125,24 +131,38 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
             
         } else if collectionView == latestResultsCollectionView {
             
-            guard let eventCell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.eventCellIdentifier, for: indexPath) as? EventCell else { return UICollectionViewCell() }
+            guard let latestResultCell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.latestResultCellIdentifier, for: indexPath) as? LatestResultsCell else { return UICollectionViewCell() }
             
             let n = leaguesDetailsViewModel.eventsList.value?.events.count
-            let event = leaguesDetailsViewModel.eventsList.value?.events[indexPath.item]
+            let result = leaguesDetailsViewModel.resultsList.value?.events[indexPath.item]
             
             if n == nil {
-                eventCell.eventNameLabel.text = "No Upcoming Events!"
-                eventCell.eventDateLabel.isHidden = true
-                eventCell.eventTimeLabel.isHidden = true
+                
+                latestResultsCollectionView.backgroundColor = UIColor(red: 242.0, green: 209.0, blue: 209.0, alpha: 1)
+                latestResultCell.homeTeamLabel.text = "No Results Available!"
+                latestResultCell.dateLabel.isHidden = true
+                latestResultCell.timeLabel.isHidden = true
+                latestResultCell.awayTeamLabel.isHidden = true
+                latestResultCell.homeScoreLabel.isHidden = true
+                latestResultCell.awayScoreLabel.isHidden = true
+
             } else {
-                eventCell.eventDateLabel.isHidden = false
-                eventCell.eventTimeLabel.isHidden = false
-                eventCell.eventNameLabel.text = event?.strEvent
-                eventCell.eventDateLabel.text = event?.dateEvent
-                eventCell.eventTimeLabel.text = event?.strTime
+                
+                latestResultCell.dateLabel.isHidden = false
+                latestResultCell.timeLabel.isHidden = false
+                latestResultCell.awayTeamLabel.isHidden = false
+                latestResultCell.homeScoreLabel.isHidden = false
+                latestResultCell.awayScoreLabel.isHidden = false
+                latestResultCell.dateLabel.text = result?.dateEvent
+                latestResultCell.timeLabel.text = result?.strTime
+                latestResultCell.homeTeamLabel.text = result?.strHomeTeam
+                latestResultCell.awayTeamLabel.text = result?.strAwayTeam
+                latestResultCell.homeScoreLabel.text = result?.intHomeScore
+                latestResultCell.awayScoreLabel.text = result?.intAwayScore
+                            
             }
             
-            return eventCell
+            return latestResultCell
             
         } else {
             
@@ -171,16 +191,16 @@ extension LeaguesDetailsViewController: UICollectionViewDelegateFlowLayout {
         } else if collectionView == teamsCollectionView {
             returned = CGSize(width: teamsCollectionView.bounds.height, height: teamsCollectionView.bounds.height)
         } else {
-            returned = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/3)
+            returned = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/2)
         }
         return returned
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return 5.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return 5.0
     }
 }
