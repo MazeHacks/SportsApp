@@ -64,7 +64,7 @@ class LeaguesDetailsViewController: UIViewController {
         }
         
         // Fetching Latest Results from API and Updating Collection View
-        leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
+        leaguesDetailsViewModel.resultsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.latestResultsCollectionView.reloadData()
             }
@@ -111,21 +111,11 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
             
             guard let eventCell = upcomingEventsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.eventCellIdentifier, for: indexPath) as? EventCell else { return UICollectionViewCell() }
             
-            let n = leaguesDetailsViewModel.eventsList.value?.events.count
             let event = leaguesDetailsViewModel.eventsList.value?.events[indexPath.item]
             
-            if n == nil {
-                upcomingEventsCollectionView.backgroundColor = UIColor(red: 242.0, green: 209.0, blue: 209.0, alpha: 0.5)
-                eventCell.eventNameLabel.text = "No Upcoming Events!"
-                eventCell.eventDateLabel.isHidden = true
-                eventCell.eventTimeLabel.isHidden = true
-            } else {
-                eventCell.eventDateLabel.isHidden = false
-                eventCell.eventTimeLabel.isHidden = false
                 eventCell.eventNameLabel.text = event?.strEvent
                 eventCell.eventDateLabel.text = event?.dateEvent
                 eventCell.eventTimeLabel.text = event?.strTime
-            }
             
             return eventCell
             
@@ -133,35 +123,15 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
             
             guard let latestResultCell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.latestResultCellIdentifier, for: indexPath) as? LatestResultsCell else { return UICollectionViewCell() }
             
-            let n = leaguesDetailsViewModel.eventsList.value?.events.count
             let result = leaguesDetailsViewModel.resultsList.value?.events[indexPath.item]
-            
-            if n == nil {
-                
-                latestResultsCollectionView.backgroundColor = UIColor(red: 242.0, green: 209.0, blue: 209.0, alpha: 1)
-                latestResultCell.homeTeamLabel.text = "No Results Available!"
-                latestResultCell.dateLabel.isHidden = true
-                latestResultCell.timeLabel.isHidden = true
-                latestResultCell.awayTeamLabel.isHidden = true
-                latestResultCell.homeScoreLabel.isHidden = true
-                latestResultCell.awayScoreLabel.isHidden = true
 
-            } else {
-                
-                latestResultCell.dateLabel.isHidden = false
-                latestResultCell.timeLabel.isHidden = false
-                latestResultCell.awayTeamLabel.isHidden = false
-                latestResultCell.homeScoreLabel.isHidden = false
-                latestResultCell.awayScoreLabel.isHidden = false
                 latestResultCell.dateLabel.text = result?.dateEvent
                 latestResultCell.timeLabel.text = result?.strTime
                 latestResultCell.homeTeamLabel.text = result?.strHomeTeam
                 latestResultCell.awayTeamLabel.text = result?.strAwayTeam
                 latestResultCell.homeScoreLabel.text = result?.intHomeScore
                 latestResultCell.awayScoreLabel.text = result?.intAwayScore
-                            
-            }
-            
+                                        
             return latestResultCell
             
         } else {

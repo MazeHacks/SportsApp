@@ -30,8 +30,8 @@ struct LeaguesDetailsViewModel {
     func filterEvents() {
         guard let events = eventsList.value?.events else { return }
         let dateFormatter = ISO8601DateFormatter()
-        let N = eventsList.value?.events.count ?? 0
-        for i in (0 ..< N).reversed() {
+        let n = eventsList.value?.events.count ?? 0
+        for i in (0 ..< n).reversed() {
             if let eventDate = events[i].dateEvent, var eventTime = events[i].strTime {
                 if eventTime.count < 8 {
                     eventTime = "00:00:00"
