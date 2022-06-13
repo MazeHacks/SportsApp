@@ -80,10 +80,8 @@ class LeaguesTableViewController: UITableViewController {
         destinationVC.leagueID = currentLeague?.idLeague
         destinationVC.leagueName = currentLeague?.strLeague
         guard destinationVC.leagueID != nil else { return }
-        self.navigationController?.pushViewController(destinationVC, animated: true)
-//        destinationVC.modalPresentationStyle = .fullScreen
-//        self.present(destinationVC, animated: true)
-        
+        destinationVC.modalPresentationStyle = .fullScreen
+        self.present(destinationVC, animated: true)
         
     }
 

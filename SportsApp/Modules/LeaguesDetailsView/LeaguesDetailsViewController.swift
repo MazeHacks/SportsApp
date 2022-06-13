@@ -21,6 +21,14 @@ class LeaguesDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Adding double tap gesture recognizer
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
+        gestureRecognizer.numberOfTapsRequired = 2
+        gestureRecognizer.numberOfTouchesRequired = 1
+        self.view.addGestureRecognizer(gestureRecognizer)
+        self.view.isUserInteractionEnabled = true
+        
         // Registering cells for the 3 collection views
         let eventCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
         upcomingEventsCollectionView.register(eventCell, forCellWithReuseIdentifier: K.LeaguesDetails.eventCellIdentifier)
@@ -66,7 +74,14 @@ class LeaguesDetailsViewController: UIViewController {
         }
     }
     
+    // Gesture recognizer method
+    @objc func viewDoubleTapped(_ gesture: UIGestureRecognizer) {
+        self.dismiss(animated: true)
+    }
+    
 }
+
+
 
 //MARK: - UICollectionView DataSource Methods
 
