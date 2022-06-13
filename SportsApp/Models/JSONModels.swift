@@ -56,6 +56,8 @@ struct Events: Codable {
 // Teams Model
 struct Team: Codable {
     var strTeamBadge: String?
+    var strTeam: String?
+    var strSport: String?
 }
 
 struct Teams: Codable {

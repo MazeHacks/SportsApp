@@ -9,8 +9,8 @@ import Foundation
 
 struct K {
     
-    // General
     static let noPictureAvailableIconName = "no-picture-available-icon"
+    static let leaguesDetailsScreenIdentifier = "TeamDetailsViewController"
     
     // SportsTab Constants
     struct sportsTab {

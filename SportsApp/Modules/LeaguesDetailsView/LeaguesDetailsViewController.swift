@@ -21,7 +21,7 @@ class LeaguesDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // Adding double tap gesture recognizer
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
         gestureRecognizer.numberOfTapsRequired = 2
@@ -78,6 +78,7 @@ class LeaguesDetailsViewController: UIViewController {
                 self?.teamsCollectionView.reloadData()
             }
         }
+        
     }
     
     // Gesture recognizer method
@@ -110,34 +111,34 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
         if collectionView == upcomingEventsCollectionView {
             
             guard let eventCell = upcomingEventsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.eventCellIdentifier, for: indexPath) as? EventCell else { return UICollectionViewCell() }
-            
+            upcomingEventsCollectionView.backgroundColor = .white
             let event = leaguesDetailsViewModel.eventsList.value?.events[indexPath.item]
             
-                eventCell.eventNameLabel.text = event?.strEvent
-                eventCell.eventDateLabel.text = event?.dateEvent
-                eventCell.eventTimeLabel.text = event?.strTime
+            eventCell.eventNameLabel.text = event?.strEvent
+            eventCell.eventDateLabel.text = event?.dateEvent
+            eventCell.eventTimeLabel.text = event?.strTime
             
             return eventCell
             
         } else if collectionView == latestResultsCollectionView {
             
             guard let latestResultCell = latestResultsCollectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.latestResultCellIdentifier, for: indexPath) as? LatestResultsCell else { return UICollectionViewCell() }
-            
+            latestResultsCollectionView.backgroundColor = .white
             let result = leaguesDetailsViewModel.resultsList.value?.events[indexPath.item]
-
-                latestResultCell.dateLabel.text = result?.dateEvent
-                latestResultCell.timeLabel.text = result?.strTime
-                latestResultCell.homeTeamLabel.text = result?.strHomeTeam
-                latestResultCell.awayTeamLabel.text = result?.strAwayTeam
-                latestResultCell.homeScoreLabel.text = result?.intHomeScore
-                latestResultCell.awayScoreLabel.text = result?.intAwayScore
-                                        
+            
+            latestResultCell.dateLabel.text = result?.dateEvent
+            latestResultCell.timeLabel.text = result?.strTime
+            latestResultCell.homeTeamLabel.text = result?.strHomeTeam
+            latestResultCell.awayTeamLabel.text = result?.strAwayTeam
+            latestResultCell.homeScoreLabel.text = result?.intHomeScore
+            latestResultCell.awayScoreLabel.text = result?.intAwayScore
+            
             return latestResultCell
             
         } else {
             
             guard let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: K.LeaguesDetails.teamCellIdentifier, for: indexPath) as? TeamsCell else { return UICollectionViewCell() }
-            
+            teamsCollectionView.backgroundColor = .white
             let team = leaguesDetailsViewModel.teamsList.value?.teams[indexPath.item]
             let url = URL(string: team?.strTeamBadge ?? "")
             teamCell.teamBadgeImageView.kf.setImage(with: url, placeholder: UIImage(named: K.noPictureAvailableIconName))
@@ -149,6 +150,22 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == teamsCollectionView {
+            
+        let team = leaguesDetailsViewModel.teamsList.value?.teams[indexPath.item]
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.leaguesDetailsScreenIdentifier) as! TeamDetailsViewController
+        destinationVC.sport = team?.strSport
+        destinationVC.teamName = team?.strTeam
+        destinationVC.teamBadge = team?.strTeamBadge
+        destinationVC.modalPresentationStyle = .fullScreen
+        self.present(destinationVC, animated: true)
+        
+        }
+    }
+    
 }
 
 //MARK: - UICollectionView FlowLayout Methods
@@ -157,7 +174,7 @@ extension LeaguesDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var returned: CGSize
         if collectionView == upcomingEventsCollectionView {
-            returned = CGSize(width: upcomingEventsCollectionView.bounds.width, height: upcomingEventsCollectionView.bounds.height/3)
+            returned = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/3)
         } else if collectionView == teamsCollectionView {
             returned = CGSize(width: teamsCollectionView.bounds.height, height: teamsCollectionView.bounds.height)
         } else {
