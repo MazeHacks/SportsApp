@@ -89,7 +89,6 @@ class APIService {
                     do {
                         let result = try JSONDecoder().decode(Teams.self, from: data)
                         completionHandler(result)
-                        print(result)
                     } catch {
                         print("Error fetching Teams!")
                     }

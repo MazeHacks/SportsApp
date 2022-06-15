@@ -21,11 +21,41 @@
                     </tabBar>
                     <connections>
                         <segue destination="eu9-eL-VMu" kind="relationship" relationship="viewControllers" id="qJr-fn-pqD"/>
+                        <segue destination="eMK-6j-0Ej" kind="relationship" relationship="viewControllers" id="0wd-9C-QPh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xap-nM-C5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-377" y="189"/>
+        </scene>
+        <!--Favourite Leagues-->
+        <scene sceneID="96C-5a-Mc9">
+            <objects>
+                <tableViewController id="2Wc-61-lKj" customClass="FavouritesTableViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wmx-4U-Qb6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.77647058820000003" green="0.86274509799999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Rda-Be-jdC">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rda-Be-jdC" id="B5E-mc-2mI">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="2Wc-61-lKj" id="wdY-WB-seZ"/>
+                            <outlet property="delegate" destination="2Wc-61-lKj" id="mXf-Os-QVW"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Favourite Leagues" id="i1e-zF-9oQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q14-rA-bEv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310.144927536232" y="487.5"/>
         </scene>
         <!--Sports-->
         <scene sceneID="Qbd-Il-uje">
@@ -71,7 +101,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.77647058823529413" green="0.86274509803921573" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leagueCell" id="CAZ-CJ-7GI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CAZ-CJ-7GI">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CAZ-CJ-7GI" id="rEK-t1-zBm" customClass="LeagueCell" customModule="SportsApp" customModuleProvider="target">
@@ -91,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="2813" y="-181"/>
         </scene>
-        <!--League Details-->
+        <!--Leagues Details View Controller-->
         <scene sceneID="UfX-3A-Tyg">
             <objects>
                 <viewController storyboardIdentifier="LeaguesDetailsCollectionViewController" id="Ahb-ek-lNz" customClass="LeaguesDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,55 +129,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TwT-h3-wzf">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="jNd-Yr-r1o">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-KE-siv">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="269.5"/>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KRM-0t-0RE">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                         <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4KL-g8-art">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rru-1K-vbX">
-                                        <rect key="frame" x="0.0" y="274.5" width="414" height="269"/>
-                                        <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YnW-uo-DNp">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QmG-rc-KHX">
-                                        <rect key="frame" x="0.0" y="548.5" width="414" height="269.5"/>
-                                        <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5bm-Hc-Q3d">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="MKM-cq-Ny2"/>
+                                        </constraints>
+                                        <color key="barTintColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <items>
+                                            <navigationItem title="League Details" id="RPU-aT-qyR">
+                                                <barButtonItem key="rightBarButtonItem" style="plain" id="Cxv-Uj-CQb">
+                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Huq-46-NRv">
+                                                        <rect key="frame" x="302" y="0.0" width="92" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="icons8-heart-30"/>
+                                                    </button>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2UP-NL-wdz">
+                                        <rect key="frame" x="0.0" y="45" width="414" height="773"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xwm-KE-siv">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="254.5"/>
+                                                <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4KL-g8-art">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rru-1K-vbX">
+                                                <rect key="frame" x="0.0" y="259.5" width="414" height="254"/>
+                                                <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="YnW-uo-DNp">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QmG-rc-KHX">
+                                                <rect key="frame" x="0.0" y="518.5" width="414" height="254.5"/>
+                                                <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5bm-Hc-Q3d">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OFW-bJ-6rQ"/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TwT-h3-wzf" firstAttribute="top" secondItem="OFW-bJ-6rQ" secondAttribute="top" id="4Db-Ap-COL"/>
-                            <constraint firstItem="OFW-bJ-6rQ" firstAttribute="bottom" secondItem="TwT-h3-wzf" secondAttribute="bottom" id="6dE-ac-TPP"/>
-                            <constraint firstItem="OFW-bJ-6rQ" firstAttribute="trailing" secondItem="TwT-h3-wzf" secondAttribute="trailing" id="HTW-c1-Emf"/>
-                            <constraint firstItem="TwT-h3-wzf" firstAttribute="leading" secondItem="OFW-bJ-6rQ" secondAttribute="leading" id="jSB-kZ-BtL"/>
+                            <constraint firstItem="jNd-Yr-r1o" firstAttribute="top" secondItem="OFW-bJ-6rQ" secondAttribute="top" id="KeQ-A5-1Qf"/>
+                            <constraint firstItem="jNd-Yr-r1o" firstAttribute="trailing" secondItem="OFW-bJ-6rQ" secondAttribute="trailing" id="Wsi-cD-NVc"/>
+                            <constraint firstItem="OFW-bJ-6rQ" firstAttribute="bottom" secondItem="jNd-Yr-r1o" secondAttribute="bottom" id="aQU-KB-reg"/>
+                            <constraint firstItem="jNd-Yr-r1o" firstAttribute="leading" secondItem="OFW-bJ-6rQ" secondAttribute="leading" id="uVh-5N-C2t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="League Details" id="kZQ-im-EMT"/>
                     <connections>
                         <outlet property="latestResultsCollectionView" destination="rru-1K-vbX" id="IUG-gO-lY1"/>
                         <outlet property="teamsCollectionView" destination="QmG-rc-KHX" id="1Fq-HZ-z6Z"/>
@@ -156,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSb-cl-Vph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3575" y="-181"/>
+            <point key="canvasLocation" x="3616" y="-181"/>
         </scene>
         <!--Team Details View Controller-->
         <scene sceneID="EPb-hw-UKB">
@@ -205,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYP-sN-02H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4339" y="-181"/>
+            <point key="canvasLocation" x="4387" y="-181"/>
         </scene>
         <!--Sports-->
         <scene sceneID="YWb-u2-Hga">
@@ -246,8 +300,28 @@
             </objects>
             <point key="canvasLocation" x="2009" y="-181"/>
         </scene>
+        <!--Favourites-->
+        <scene sceneID="WRb-Tf-ddV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eMK-6j-0Ej" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourites" image="icons8-heart-30" id="qIN-B5-7yh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rmg-Yx-Ycg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Wc-61-lKj" kind="relationship" relationship="rootViewController" id="Vob-78-Abl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V8y-2Z-8fC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="400.00000000000006" y="487.5"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="icons8-heart-30" width="30" height="30"/>
         <image name="icons8-sports-video-intersound-30" width="30" height="30"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

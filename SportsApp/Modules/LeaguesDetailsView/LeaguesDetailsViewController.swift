@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class LeaguesDetailsViewController: UIViewController {
+class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
     
     @IBOutlet weak var upcomingEventsCollectionView: UICollectionView!
     @IBOutlet weak var latestResultsCollectionView: UICollectionView!
@@ -18,7 +18,9 @@ class LeaguesDetailsViewController: UIViewController {
     
     var leagueID: String?
     var leagueName: String?
-    
+    var leagueBadge: String?
+    var leagueYoutube: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -154,15 +156,15 @@ extension LeaguesDetailsViewController: UICollectionViewDataSource, UICollection
         
         if collectionView == teamsCollectionView {
             
-        let team = leaguesDetailsViewModel.teamsList.value?.teams[indexPath.item]
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.leaguesDetailsScreenIdentifier) as! TeamDetailsViewController
-        destinationVC.sport = team?.strSport
-        destinationVC.teamName = team?.strTeam
-        destinationVC.teamBadge = team?.strTeamBadge
-        destinationVC.modalPresentationStyle = .fullScreen
-        self.present(destinationVC, animated: true)
-        
+            let team = leaguesDetailsViewModel.teamsList.value?.teams[indexPath.item]
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.leaguesDetailsScreenIdentifier) as! TeamDetailsViewController
+            destinationVC.sport = team?.strSport
+            destinationVC.teamName = team?.strTeam
+            destinationVC.teamBadge = team?.strTeamBadge
+            destinationVC.modalPresentationStyle = .fullScreen
+            self.present(destinationVC, animated: true)
+
         }
     }
     
@@ -174,11 +176,11 @@ extension LeaguesDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var returned: CGSize
         if collectionView == upcomingEventsCollectionView {
-            returned = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/3)
+            returned = CGSize(width: upcomingEventsCollectionView.frame.width, height: upcomingEventsCollectionView.frame.height/3)
         } else if collectionView == teamsCollectionView {
-            returned = CGSize(width: teamsCollectionView.bounds.height, height: teamsCollectionView.bounds.height)
+            returned = CGSize(width: teamsCollectionView.frame.height, height: teamsCollectionView.frame.height)
         } else {
-            returned = CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height/2)
+            returned = CGSize(width: collectionView.frame.width, height: collectionView.frame.height/2)
         }
         return returned
     }
