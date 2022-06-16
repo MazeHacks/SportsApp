@@ -26,18 +26,10 @@ class TeamDetailsViewController: UIViewController {
         teamNameLabel.text = teamName
         sportLabel.text = sport
         
-        // Adding double tap gesture recognizer
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
-        gestureRecognizer.numberOfTapsRequired = 2
-        gestureRecognizer.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(gestureRecognizer)
-        self.view.isUserInteractionEnabled = true
-        
-    }
-
-    // Gesture recognizer method
-    @objc func viewDoubleTapped(_ gesture: UIGestureRecognizer) {
-        self.dismiss(animated: true)
     }
     
+    // dismiss view
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
 }

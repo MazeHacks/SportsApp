@@ -77,9 +77,8 @@ class LeaguesTableViewController: UITableViewController {
         let currentLeague = leaguesScreenViewModel.leaguesList.value?.countries[indexPath.row]
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesDetails.leaguesDetailsScreenIdentifier) as! LeaguesDetailsViewController
-        destinationVC.leagueID = currentLeague?.idLeague
-        destinationVC.leagueName = currentLeague?.strLeague
-        guard destinationVC.leagueID != nil else { return }
+        destinationVC.league = currentLeague
+        guard destinationVC.league?.idLeague != nil else { return }
         destinationVC.modalPresentationStyle = .fullScreen
         self.present(destinationVC, animated: true)
         

@@ -15,21 +15,25 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     
     private let leaguesDetailsViewModel = LeaguesDetailsViewModel()
+    private var favouritesViewModel = FavouritesViewModel()
     
-    var leagueID: String?
-    var leagueName: String?
-    var leagueBadge: String?
-    var leagueYoutube: String?
+//    var leagueID: String?
+//    var leagueName: String?
+//    var leagueBadge: String?
+//    var leagueYoutube: String?
+    var league: League?
 
+    @IBOutlet weak var collectionViews: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         // Adding double tap gesture recognizer
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
-        gestureRecognizer.numberOfTapsRequired = 2
-        gestureRecognizer.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(gestureRecognizer)
-        self.view.isUserInteractionEnabled = true
+//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
+//        gestureRecognizer.numberOfTapsRequired = 2
+//        gestureRecognizer.numberOfTouchesRequired = 1
+//        self.collectionViews.addGestureRecognizer(gestureRecognizer)
+//        self.collectionViews.isUserInteractionEnabled = true
         
         // Registering cells for the 3 collection views
         let eventCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)
@@ -58,7 +62,7 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
         teamsCollectionView.delegate = self
         
         // Fetching Upcoming Events from API and Updating Collection View
-        leaguesDetailsViewModel.getEvents(of: self.leagueID!)
+        leaguesDetailsViewModel.getEvents(of: (self.league?.idLeague)!)
         leaguesDetailsViewModel.eventsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.upcomingEventsCollectionView.reloadData()
@@ -73,9 +77,9 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
         }
         
         // Fetching Teams from API and Updating Collection View
-        let league = leagueName?.replacingOccurrences(of: " ", with: "%20")
+        let league = league?.strLeague?.replacingOccurrences(of: " ", with: "%20")
         leaguesDetailsViewModel.getTeams(in: league!)
-        leaguesDetailsViewModel.teamsList.bind { [weak self] teams in
+        leaguesDetailsViewModel.teamsList.bind { [weak self] _ in
             DispatchQueue.main.async {
                 self?.teamsCollectionView.reloadData()
             }
@@ -83,11 +87,18 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
         
     }
     
-    // Gesture recognizer method
-    @objc func viewDoubleTapped(_ gesture: UIGestureRecognizer) {
+    // Adding current league to favourites
+//    @IBAction func addToFavourites(_ sender: Any) {
+//
+//        favouritesViewModel.favouritesList?.countries.append(league!)
+//        debugPrint(favouritesViewModel.favouritesList?.countries.count)
+//        
+//    }
+    
+    // dismiss view
+    @IBAction func backPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true)
     }
-    
 }
 
 

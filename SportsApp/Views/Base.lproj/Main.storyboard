@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.77647058820000003" green="0.86274509799999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Rda-Be-jdC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leagueCell" id="Rda-Be-jdC">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rda-Be-jdC" id="B5E-mc-2mI">
@@ -55,7 +55,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q14-rA-bEv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310.144927536232" y="487.5"/>
+            <point key="canvasLocation" x="1199" y="488"/>
         </scene>
         <!--Sports-->
         <scene sceneID="Qbd-Il-uje">
@@ -87,6 +87,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sports" id="Wbb-8y-xWC"/>
+                    <connections>
+                        <segue destination="GDn-bE-YRr" kind="show" identifier="goToLeagues" id="eKn-Tj-5cB"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="893-BX-eUG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.77647058823529413" green="0.86274509803921573" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CAZ-CJ-7GI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leagueCell" id="CAZ-CJ-7GI">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CAZ-CJ-7GI" id="rEK-t1-zBm" customClass="LeagueCell" customModule="SportsApp" customModuleProvider="target">
@@ -119,7 +122,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ry3-Gh-uuJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2813" y="-181"/>
+            <point key="canvasLocation" x="1971" y="-181"/>
         </scene>
         <!--Leagues Details View Controller-->
         <scene sceneID="UfX-3A-Tyg">
@@ -141,12 +144,20 @@
                                         <color key="barTintColor" red="0.94901960780000005" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <items>
                                             <navigationItem title="League Details" id="RPU-aT-qyR">
-                                                <barButtonItem key="rightBarButtonItem" style="plain" id="Cxv-Uj-CQb">
-                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Huq-46-NRv">
-                                                        <rect key="frame" x="302" y="0.0" width="92" height="44"/>
+                                                <barButtonItem key="leftBarButtonItem" title="Go Back" id="75B-K2-Gc9">
+                                                    <connections>
+                                                        <action selector="backPressed:" destination="Ahb-ek-lNz" id="GaC-N1-9V5"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Item" id="6CJ-oG-bUz">
+                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7TE-uM-fWU">
+                                                        <rect key="frame" x="364" y="7" width="30" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="icons8-heart-30"/>
+                                                        <connections>
+                                                            <action selector="addToFavourites:" destination="Ahb-ek-lNz" eventType="touchUpInside" id="AZ8-oP-qGL"/>
+                                                        </connections>
                                                     </button>
                                                 </barButtonItem>
                                             </navigationItem>
@@ -203,6 +214,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionViews" destination="2UP-NL-wdz" id="lr4-P2-TBV"/>
                         <outlet property="latestResultsCollectionView" destination="rru-1K-vbX" id="IUG-gO-lY1"/>
                         <outlet property="teamsCollectionView" destination="QmG-rc-KHX" id="1Fq-HZ-z6Z"/>
                         <outlet property="upcomingEventsCollectionView" destination="Xwm-KE-siv" id="0ky-gF-yNB"/>
@@ -210,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VSb-cl-Vph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3616" y="-181"/>
+            <point key="canvasLocation" x="2742" y="-181"/>
         </scene>
         <!--Team Details View Controller-->
         <scene sceneID="EPb-hw-UKB">
@@ -220,6 +232,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKV-C5-8Nq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Team Details" id="rvZ-um-sGW">
+                                        <barButtonItem key="leftBarButtonItem" title="Go Back" id="Bz1-X3-4eo">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="JXl-ce-Dup">
+                                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Go Back"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Go Back"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="wNa-zl-xoH" eventType="touchUpInside" id="t2Z-QS-fdf"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV2-n9-I53">
                                 <rect key="frame" x="175.5" y="149" width="63" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
@@ -243,9 +274,12 @@
                         <viewLayoutGuide key="safeArea" id="EM3-Sr-UDi"/>
                         <color key="backgroundColor" red="0.98039215686274506" green="0.94117647058823528" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="fKV-C5-8Nq" firstAttribute="trailing" secondItem="EM3-Sr-UDi" secondAttribute="trailing" id="0sQ-zK-vAa"/>
                             <constraint firstItem="dXN-Hv-YFP" firstAttribute="centerY" secondItem="5EF-aX-LuW" secondAttribute="centerY" id="Kb2-FI-8N2"/>
                             <constraint firstItem="zIp-ub-Vu3" firstAttribute="centerX" secondItem="5EF-aX-LuW" secondAttribute="centerX" id="Kfo-qU-aEe"/>
                             <constraint firstItem="dXN-Hv-YFP" firstAttribute="top" secondItem="GV2-n9-I53" secondAttribute="bottom" constant="120" id="LHq-XA-ltw"/>
+                            <constraint firstItem="fKV-C5-8Nq" firstAttribute="top" secondItem="EM3-Sr-UDi" secondAttribute="top" id="Mkn-Bt-f4B"/>
+                            <constraint firstItem="fKV-C5-8Nq" firstAttribute="leading" secondItem="EM3-Sr-UDi" secondAttribute="leading" id="NGf-qW-awe"/>
                             <constraint firstItem="GV2-n9-I53" firstAttribute="centerX" secondItem="5EF-aX-LuW" secondAttribute="centerX" id="XV9-wJ-W5a"/>
                             <constraint firstItem="zIp-ub-Vu3" firstAttribute="top" secondItem="dXN-Hv-YFP" secondAttribute="bottom" constant="60" id="Y69-qb-5Hp"/>
                             <constraint firstItem="dXN-Hv-YFP" firstAttribute="centerX" secondItem="5EF-aX-LuW" secondAttribute="centerX" id="cwL-Ua-FFr"/>
@@ -259,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYP-sN-02H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4387" y="-181"/>
+            <point key="canvasLocation" x="3499" y="-181"/>
         </scene>
         <!--Sports-->
         <scene sceneID="YWb-u2-Hga">
@@ -281,24 +315,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKm-qC-TzU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="400.00000000000006" y="-181.47321428571428"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="AQm-Sz-6RE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q2o-1L-aLk" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yoz-os-XjF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GDn-bE-YRr" kind="relationship" relationship="rootViewController" id="LMM-MQ-1eA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gmT-7e-bGD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2009" y="-181"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="WRb-Tf-ddV">

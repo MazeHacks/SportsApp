@@ -20,7 +20,7 @@
 		7644123F285A119100C06DC9 /* TeamDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7644123E285A119100C06DC9 /* TeamDetailsViewModel.swift */; };
 		76441242285A874000C06DC9 /* FavouritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76441241285A874000C06DC9 /* FavouritesTableViewController.swift */; };
 		76441244285A876200C06DC9 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76441243285A876200C06DC9 /* FavouritesViewModel.swift */; };
-		7670F5E3284FECDB00279835 /* DataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5E1284FECDB00279835 /* DataModels.xcdatamodeld */; };
+		76441247285B6F1000C06DC9 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76441245285B6F1000C06DC9 /* DataModel.xcdatamodeld */; };
 		7670F5EA284FF1A100279835 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5E9284FF1A100279835 /* Constants.swift */; };
 		7670F5EC284FF1B800279835 /* JSONModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5EB284FF1B800279835 /* JSONModels.swift */; };
 		7670F5EE284FF1C400279835 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670F5ED284FF1C400279835 /* APIService.swift */; };
@@ -56,7 +56,7 @@
 		7644123E285A119100C06DC9 /* TeamDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewModel.swift; sourceTree = "<group>"; };
 		76441241285A874000C06DC9 /* FavouritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewController.swift; sourceTree = "<group>"; };
 		76441243285A876200C06DC9 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
-		7670F5E2284FECDB00279835 /* DataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModels.xcdatamodel; sourceTree = "<group>"; };
+		76441246285B6F1000C06DC9 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7670F5E9284FF1A100279835 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7670F5EB284FF1B800279835 /* JSONModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModels.swift; sourceTree = "<group>"; };
 		7670F5ED284FF1C400279835 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -150,6 +150,7 @@
 				7670F5EB284FF1B800279835 /* JSONModels.swift */,
 				7670F5ED284FF1C400279835 /* APIService.swift */,
 				7670F5EF284FF1D400279835 /* Observable.swift */,
+				76441245285B6F1000C06DC9 /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 				7670F5E4284FF11F00279835 /* Models */,
 				767D91CA284B9E1D002FCCBD /* Assets.xcassets */,
 				767D91CF284B9E1D002FCCBD /* Info.plist */,
-				7670F5E1284FECDB00279835 /* DataModels.xcdatamodeld */,
 			);
 			path = SportsApp;
 			sourceTree = "<group>";
@@ -392,13 +392,13 @@
 				767D91C2284B9E1B002FCCBD /* AppDelegate.swift in Sources */,
 				762301BE2852849000A4662F /* LeaguesDetailsViewModel.swift in Sources */,
 				7644123D28577A4600C06DC9 /* TeamDetailsViewController.swift in Sources */,
-				7670F5E3284FECDB00279835 /* DataModels.xcdatamodeld in Sources */,
 				7670F5FE284FF31100279835 /* sportsCollectionViewController.swift in Sources */,
 				7670F5EC284FF1B800279835 /* JSONModels.swift in Sources */,
 				7670F5FB284FF2C600279835 /* LeagueCell.swift in Sources */,
 				7670F5F0284FF1D400279835 /* Observable.swift in Sources */,
 				767D91C4284B9E1B002FCCBD /* SceneDelegate.swift in Sources */,
 				762301C828530D5200A4662F /* LatestResultsCell.swift in Sources */,
+				76441247285B6F1000C06DC9 /* DataModel.xcdatamodeld in Sources */,
 				762301BC2852846100A4662F /* LeaguesDetailsViewController.swift in Sources */,
 				7670F5EE284FF1C400279835 /* APIService.swift in Sources */,
 				76E421AA28521090004F02DB /* LeaguesScreenViewModel.swift in Sources */,
@@ -632,13 +632,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		7670F5E1284FECDB00279835 /* DataModels.xcdatamodeld */ = {
+		76441245285B6F1000C06DC9 /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				7670F5E2284FECDB00279835 /* DataModels.xcdatamodel */,
+				76441246285B6F1000C06DC9 /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 7670F5E2284FECDB00279835 /* DataModels.xcdatamodel */;
-			path = DataModels.xcdatamodeld;
+			currentVersion = 76441246285B6F1000C06DC9 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
