@@ -88,12 +88,11 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
     }
     
     // Adding current league to favourites
-//    @IBAction func addToFavourites(_ sender: Any) {
-//
-//        favouritesViewModel.favouritesList?.countries.append(league!)
-//        debugPrint(favouritesViewModel.favouritesList?.countries.count)
-//        
-//    }
+    @IBAction func addToFavourites(_ sender: Any) {
+
+        print("League added!")
+        
+    }
     
     // dismiss view
     @IBAction func backPressed(_ sender: UIBarButtonItem) {
