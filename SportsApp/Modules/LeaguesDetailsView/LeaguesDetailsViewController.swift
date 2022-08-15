@@ -17,23 +17,12 @@ class LeaguesDetailsViewController: UIViewController, UINavigationBarDelegate {
     private let leaguesDetailsViewModel = LeaguesDetailsViewModel()
     private var favouritesViewModel = FavouritesViewModel()
     
-//    var leagueID: String?
-//    var leagueName: String?
-//    var leagueBadge: String?
-//    var leagueYoutube: String?
     var league: League?
 
     @IBOutlet weak var collectionViews: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        // Adding double tap gesture recognizer
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewDoubleTapped(_:)))
-//        gestureRecognizer.numberOfTapsRequired = 2
-//        gestureRecognizer.numberOfTouchesRequired = 1
-//        self.collectionViews.addGestureRecognizer(gestureRecognizer)
-//        self.collectionViews.isUserInteractionEnabled = true
         
         // Registering cells for the 3 collection views
         let eventCell = UINib(nibName: K.LeaguesDetails.eventCelllNibName, bundle: nil)

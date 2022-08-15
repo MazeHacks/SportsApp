@@ -54,7 +54,7 @@ class FavouritesTableViewController: UITableViewController {
         
         // Check internet connectivity
         self.monitor.pathUpdateHandler = { pathUpdateHandler in
-            if pathUpdateHandler.status == .satisfied {
+            if pathUpdateHandler.status == .unsatisfied {
                 print("Internet connection is on.")
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let destinationVC = storyBoard.instantiateViewController(withIdentifier: K.LeaguesDetails.leaguesDetailsScreenIdentifier) as! LeaguesDetailsViewController

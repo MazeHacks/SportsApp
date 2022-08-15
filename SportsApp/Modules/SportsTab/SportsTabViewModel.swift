@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SportsTabViewModel {
+class SportsTabViewModel {
     
     var sportsList: Observable<Sports> = Observable(nil)
     
@@ -15,7 +15,7 @@ struct SportsTabViewModel {
     func getSports() {
         APIService.shared.fetchSports(from: K.sportsTab.sportsListApiUrl, completionHandler: { result in
             DispatchQueue.main.async {
-                sportsList.value = result
+                self.sportsList.value = result
             }
         })
     }

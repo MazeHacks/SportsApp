@@ -10,8 +10,8 @@ import Kingfisher
 
 class sportsCollectionViewController: UICollectionViewController {
     
-    private let sportsTabViewModel = SportsTabViewModel()
-    private var leaguesScreenViewModel = LeaguesScreenViewModel()
+    weak var sportsTabViewModel: SportsTabViewModel!
+    weak var leaguesScreenViewModel: LeaguesScreenViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class sportsCollectionViewController: UICollectionViewController {
 extension sportsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.bounds.width/2, height: 120.0)
+        CGSize(width: collectionView.bounds.width/2, height: 135.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
